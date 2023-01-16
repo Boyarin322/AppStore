@@ -7,6 +7,10 @@ html {
     font-size: 16px;
   }
 }
+@font-face {
+    font-family: "Helvetika";
+    src: url('https://fonts.cdnfonts.com/css/helvetica-neue-9');
+}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -23,5 +27,6 @@ body {
 
 #header-nav {
      width : 100%;
+     font-weight : bold;
 }
 
