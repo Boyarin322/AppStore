@@ -2,22 +2,22 @@
 using System.Data.Common;
 namespace AppStore.Models
 {
-    public class Product
+    public abstract class Product
     {
         [Required]
         [Range(0, 100000)]
-        public decimal Price;
-        public bool IsFavorite;
+        protected decimal Price;
+        protected bool IsFavorite;
         [Required]
         [MaxLength(50)]
         [MinLength(5)]
-        public string Name;
+        protected string Name;
         [MaxLength(1000)]
         [MinLength(10)]
-        public string Description;
+        protected string Description;
         [Required]
         [Range(0,double.PositiveInfinity)]
-        public int Id;
+        protected int Id;
 
     }
 }

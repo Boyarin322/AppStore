@@ -60,6 +60,7 @@ body {
 }
 .mainbutton {
     position: absolute;
+    background-color: white;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -67,4 +68,8 @@ body {
     border-radius : 0;
     word-wrap: unset;
 }
-.mainbutton 
+.mainbutton:hover{
+    transition-duration :0.7s;
+    background-color : black;
+    color : white;
+}
