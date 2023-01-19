@@ -18,6 +18,7 @@ namespace AppStore.Models
         [Required]
         [Range(0,double.PositiveInfinity)]
         public int Id;
+        public Photo Photo;
 
     }
 }
