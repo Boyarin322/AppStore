@@ -32,7 +32,7 @@ body {
 /*
 */
 .carousel{
-    height : 50%;
+    height : 0;
 }
 .carousel .carousel-inner{
     height : 100%;
@@ -45,4 +45,16 @@ body {
     .carousel {
         height : 100%;
     }
+}
+.view-item {
+    background-image: url(https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.maintext {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    word-wrap : unset;
 }
