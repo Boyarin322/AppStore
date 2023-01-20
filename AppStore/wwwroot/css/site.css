@@ -66,5 +66,10 @@ body {
     font-weight : 500;
     border-radius : 0;
     word-wrap: unset;
+    background-color : white;
 }
-.mainbutton 
+.mainbutton:hover{
+    transition : 0.7s;
+    color : white;
+    background-color : black;
+}
