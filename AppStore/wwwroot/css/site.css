@@ -1,6 +1,10 @@
 html {
   font-size: 14px;
 }
+::selection {
+    color: black;
+    background: white;
+}
 
 @media (min-width: 768px) {
   html {
@@ -31,21 +35,7 @@ body {
 }
 /*
 */
-.carousel{
-    height : 0;
-}
-.carousel .carousel-inner{
-    height : 100%;
-}
-.carousel .carousel-inner .carousel-item,
-.carousel .carousel-inner, active{
-    height : 100%;
-}
-@media (max-width : 776px){
-    .carousel {
-        height : 100%;
-    }
-}
+
 .view-item {
     background-image: url(https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-repeat: no-repeat;
@@ -73,3 +63,95 @@ body {
     color : white;
     background-color : black;
 }
+a{
+    text-decoration : none;
+    color : black;
+}
+/*
+    Logger styles
+*/
+.log-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+
+.log-container {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+}
+
+.log-body {
+    font-family: 'poppins',sans-serif;
+    background-image: url("https://images.pexels.com/photos/7130490/pexels-photo-7130490.jpeg?auto=compress&cs=tinysrgb&w=600");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+::-webkit-input-placeholder {
+    color: black;
+}
+.log-span {
+    color: black;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+
+.submit {
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    width: 100%;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    cursor: pointer;
+    transition: .3s;
+}
+
+    .submit:hover {
+        box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+        background : rgba(0,0,0,0.5)
+    }
+
+.two-col {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: black;
+    font-size: small;
+    margin-top: 10px;
+}
+
+.one {
+    display: flex;
+}
+.input-field .input {
+    height: 45px;
+    width: 87%;
+    border: none;
+    border-radius: 30px;
+    color: black;
+    font-size: 15px;
+    padding: 0 0 0 45px;
+    background: rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.log-header{
+    color: black;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+/*
+    end logger styles
+*/
