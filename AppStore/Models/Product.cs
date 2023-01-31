@@ -6,19 +6,22 @@ namespace AppStore.Models
     {
         [Required]
         [Range(0, 100000)]
-        protected decimal price;
-        protected bool isFavorite;
+        protected decimal Price;
+
+        protected bool IsFavorite;
+
         [Required]
         [MaxLength(50)]
         [MinLength(5)]
-        protected string name;
+        protected string Name;
+
         [MaxLength(1000)]
         [MinLength(10)]
-        protected string description;
-        [Required]
+        protected string Description;
+
+        [Key]
         [Range(0,double.PositiveInfinity)]
-        protected int id;
-        protected Photo photo;
+        protected int Id;
 
     }
 }
