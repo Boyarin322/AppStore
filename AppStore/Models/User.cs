@@ -31,7 +31,7 @@ namespace AppStore.Models
         public string Email { get; set; }
 
         [Required]
-        
-        public Roles Role { get; set; } = Roles.User;
+        [Display(Name = "Role")]
+        public Roles Role { get; set; } 
     }
 }

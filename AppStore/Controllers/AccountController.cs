@@ -17,7 +17,7 @@ namespace AppStore.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
-            return View();
+             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)

@@ -1,9 +1,14 @@
-﻿namespace AppStore.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AppStore.Enums
 {
     public enum Roles
     {
-        User,
-        Moderator,
-        Admin
+        [Display(Name = "User")]
+        User = 0,
+        [Display(Name = "Moderator")]
+        Moderator = 1,
+        [Display(Name = "Admin")]
+        Admin = 2,
     }
 }
