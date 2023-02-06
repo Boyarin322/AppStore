@@ -1,26 +1,37 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AppStore.Enums;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace AppStore.Models
 {
     public class User
-    {
+    { 
+        public User(string username, string password, string email)
+        {
+            Username = username;
+            Password = password;
+            Email = email;
+            Role = Roles.User;
+        }
+        
+
         [Key]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        [MinLength(2)]
-        public string Name { get; set; }
+   
+        public string Username { get; set; }
 
         [Required]
-        [MaxLength(30)]
-        [MinLength(6)]
+     
         public string Password { get; set; }
 
         [Required]
 
         public string Email { get; set; }
 
+        [Required]
+        
+        public Roles Role { get; set; } = Roles.User;
     }
 }

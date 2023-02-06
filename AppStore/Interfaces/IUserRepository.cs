@@ -6,6 +6,8 @@ namespace AppStore.Interfaces
     {
         Task<bool> Create(User entity);
         Task<User> GetValue(int id);
+
+        Task<User> GetValue(string username);
         Task<List<User>> Select();
         bool Delete(User entity);
     }

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
-namespace AppStore.Models
-{
+namespace AppStore.Models;
+/*{
     public class Product
     {
         [Required]
@@ -13,7 +13,7 @@ namespace AppStore.Models
         [Required]
         [MaxLength(50)]
         [MinLength(5)]
-        protected string Name;
+        protected string Username;
 
         [MaxLength(1000)]
         [MinLength(10)]
@@ -25,3 +25,4 @@ namespace AppStore.Models
 
     }
 }
+*/
