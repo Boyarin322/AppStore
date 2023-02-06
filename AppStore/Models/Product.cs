@@ -3,6 +3,9 @@ using System.Data.Common;
 namespace AppStore.Models
 {
     public abstract class Product
+namespace AppStore.Models;
+/*{
+    public class Product
     {
         [Required]
         [Range(0, 100000)]
@@ -13,7 +16,7 @@ namespace AppStore.Models
         [Required]
         [MaxLength(50)]
         [MinLength(5)]
-        protected string Name;
+        protected string Username;
 
         [MaxLength(1000)]
         [MinLength(10)]
@@ -25,3 +28,4 @@ namespace AppStore.Models
 
     }
 }
+*/
