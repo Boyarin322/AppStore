@@ -14,7 +14,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+    .AddCookie(options =>
+    {
+        options.LoginPath = new PathString("/Account/Logger");
+        options.AccessDeniedPath = new PathString("/Account/Logger");
+    }
+    );
 
 builder.Services.AddControllersWithViews();
 
