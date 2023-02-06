@@ -18,10 +18,15 @@ namespace AppStore.Repositories
             return true;
         }
 
-        public bool Delete(User entity)
+        public async Task<bool> Delete(int id)
         {
-             _db.Users.Remove(entity);
-             _db.SaveChangesAsync();
+            var user = _db.Users.FirstOrDefault(u => u.Id == id);
+            if(user == null)
+            {
+                return false;
+            }
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
             return true;
         }
 
@@ -38,6 +43,9 @@ namespace AppStore.Repositories
         {
             return await _db.Users.ToListAsync();
         }
-        
+        public IQueryable<User> GetAll()
+        {
+            return _db.Users;
+        }
     }
 }

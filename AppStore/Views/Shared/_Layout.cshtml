@@ -19,10 +19,19 @@
                 </a>
                 
                 <div class="float-end">
-                    <a class="btn btn-dark navbar-toggler border-0 " type="button" asp-area="" asp-controller="Account" asp-action="Logger">
-                            <i class="fa fa-solid fa-user p-1"></i>
-
-                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-dark navbar-toggler border-0 " type="button" asp-area="" asp-controller="Account" asp-action="Logger">
+                            <i class="fa fa-solid fa-user">
+                            </i>
+                        </a>
+                    }
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-dark navbar-toggler border-0 " type="button" asp-area="" asp-controller="Account" asp-action="Logger">
+                            <i class="fa fa-solid fa-user"></i>
+                        </a>
+                    }
                     <button class="btn btn-dark navbar-toggler border-0" type="button">         
                         <i class="fa fa-shopping-cart">
                         </i>
@@ -50,6 +59,18 @@
                                 <li><a class="dropdown-item" href="#">All Seasons</a></li>
                             </ul>
                         </li>
+                        @if(User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                        {
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administration
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-controller="Administration" asp-action="Users">Users</a></li>
+                                <li><a class="dropdown-item" href="#">Products</a></li>
+                            </ul>
+                        </li>
+                        }
                     </ul>
                     @if (User.Identity.IsAuthenticated)
                     {

@@ -9,6 +9,7 @@ namespace AppStore.Interfaces
 
         Task<User> GetValue(string username);
         Task<List<User>> Select();
-        bool Delete(User entity);
+        public Task<bool> Delete(int id);
+        public IQueryable<User> GetAll();
     }
 }

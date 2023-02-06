@@ -4,7 +4,9 @@ using AppStore.Interfaces;
 using AppStore.Models;
 using AppStore.Models.ViewModels;
 using AppStore.Responses;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+
 
 namespace AppStore.Services
 {
@@ -16,27 +18,55 @@ namespace AppStore.Services
         {
             _userRepository = userRepository;
         }
-        public async Task<IBaseResponse<IEnumerable<User>>> GetUsers()
+        public async Task<BaseResponse<bool>> DeleteUser(int id)
+        {
+            try
+            {
+                _userRepository.Delete(id);
+                return new BaseResponse<bool>
+                {
+                    StatusCode = StatusCode.Success,
+                    Description = "User deleted",
+                    Data = true
+                };
+           
+            }
+            catch(Exception ex)
+            {
+                return new BaseResponse<bool> { 
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError,
+                    Data= false
+                };
+
+            }
+        }
+        public async Task<BaseResponse<IEnumerable<UserViewModel>>> GetUsers()
         {
             var baseResponse = new BaseResponse<IEnumerable<User>>();
 
             try
             {
-                var users = await _userRepository.Select();
-                if (users.Count == 0)
+                var users = await _userRepository.GetAll()
+                 .Select(x => new UserViewModel()
+                 {
+                     Id = x.Id,
+                     Username = x.Username,
+                     Email = x.Email,
+                     Role = x.Role
+                 })
+             .ToListAsync();
+
+                return new BaseResponse<IEnumerable<UserViewModel>>()
                 {
-                    baseResponse.Description = "User not found";
-                    baseResponse.StatusCode = StatusCode.NotFound;
-                    return baseResponse;
-                }
-                baseResponse.Data = users;
-                baseResponse.StatusCode = StatusCode.Success;
-                return baseResponse;
+                    Data = users,
+                    StatusCode = StatusCode.Success,
+                };
 
             }
             catch (Exception ex)
             {
-                return new BaseResponse<IEnumerable<User>>()
+                return new BaseResponse<IEnumerable<UserViewModel>>()
                 {
                     StatusCode = StatusCode.InternalServerError,
                     Description = ex.Message
@@ -58,7 +88,7 @@ namespace AppStore.Services
                         StatusCode = StatusCode.NotFound
                     };
                 }
-                else if(user.Password != PasswordHashHelper.HashPassword(model.Password))
+                else if (user.Password != PasswordHashHelper.HashPassword(model.Password))
                 {
                     return new BaseResponse<ClaimsIdentity>
                     {
@@ -119,17 +149,17 @@ namespace AppStore.Services
             }
 
         }
-         private ClaimsIdentity Authentificate(User user)
-         {
-             var claims = new List<Claim>
+        private ClaimsIdentity Authentificate(User user)
+        {
+            var claims = new List<Claim>
              {
                  new Claim(ClaimsIdentity.DefaultNameClaimType, user.Username),
                  new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
              };
-             return new ClaimsIdentity(claims, "ApplicationCookie", 
-                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-         }
-        
+            return new ClaimsIdentity(claims, "ApplicationCookie",
+                ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+        }
+
 
     }
 }
