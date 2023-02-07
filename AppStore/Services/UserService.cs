@@ -22,7 +22,7 @@ namespace AppStore.Services
         {
             try
             {
-                _userRepository.Delete(id);
+                await _userRepository.Delete(id);
                 return new BaseResponse<bool>
                 {
                     StatusCode = StatusCode.Success,
