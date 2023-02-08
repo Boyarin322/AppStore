@@ -34,7 +34,7 @@ namespace AppStore.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new System.Security.Claims.ClaimsPrincipal(response.Data));
 
-                    var emailResult = await EmailHelper.SendMailAsync(model.Email, "Thanks for registration");
+                    var emailResult = await EmailHelper.SendMailAsync(model.Email, "Thanks for registration to AppStore");
                     _logger.LogInformation($"Mail was sent : {emailResult}");
                     return RedirectToAction("Index", "Home");
 
