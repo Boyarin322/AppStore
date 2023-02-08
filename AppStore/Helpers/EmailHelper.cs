@@ -13,16 +13,14 @@ namespace AppStore.Helpers
                 messege.To.Add(MailboxAddress.Parse(email));
                 messege.Subject = "Messege from AppStore";
                 messege.Body = new BodyBuilder() { HtmlBody = $"<h2 style\"color=red\">{text}</h2>" }.ToMessageBody();
-                
-                using (MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient())
-                {
-                    await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                    await client.AuthenticateAsync("noreply1069@gmail.com", "ncvmzytndquvxwyf");
-                    await client.SendAsync(messege);
-                    await client.DisconnectAsync(true);
 
-                    return true;
-                }
+                using MailKit.Net.Smtp.SmtpClient client = new();
+                await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                await client.AuthenticateAsync("noreply1069@gmail.com", "ncvmzytndquvxwyf");
+                await client.SendAsync(messege);
+                await client.DisconnectAsync(true);
+
+                return true;
             }
             catch (Exception ex)
             {

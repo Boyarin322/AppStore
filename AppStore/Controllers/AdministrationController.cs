@@ -1,4 +1,5 @@
-﻿using AppStore.Interfaces;
+﻿using AppStore.Helpers;
+using AppStore.Interfaces;
 using AppStore.Models;
 using AppStore.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +9,10 @@ namespace AppStore.Controllers
     public class AdministrationController : Controller
     {
         private readonly IUserService _userService;
-
-        public AdministrationController(IUserService userService)
+        private readonly ILogger<AdministrationController> _logger;
+        public AdministrationController(ILogger<AdministrationController> logger,IUserService userService)
         {
+            _logger = logger;
             _userService = userService;
         }
 
@@ -32,6 +34,13 @@ namespace AppStore.Controllers
             {
                 return RedirectToAction("Users", "Administration");
             }
+            return RedirectToAction("Users", "Administration");
+        }
+        [HttpPost]
+        public async Task<IActionResult> SendEmail(string email)
+        {
+            var result = await EmailHelper.SendMailAsync(email, "Checking...");
+            _logger.LogInformation($"Messege to{email} was sent: {result}");
             return RedirectToAction("Users", "Administration");
         }
     }
