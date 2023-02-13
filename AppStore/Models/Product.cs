@@ -1,31 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Data.Common;
+
 namespace AppStore.Models
 {
-    public abstract class Product
-namespace AppStore.Models;
-/*{
+
     public class Product
     {
         [Required]
-        [Range(0, 100000)]
-        protected decimal Price;
+        public decimal Price;
 
-        protected bool IsFavorite;
+        public bool IsFavorite;
 
         [Required]
-        [MaxLength(50)]
-        [MinLength(5)]
-        protected string Username;
+        public string Productname;
 
-        [MaxLength(1000)]
-        [MinLength(10)]
-        protected string Description;
+        [Required]
+        public string Description;
 
         [Key]
-        [Range(0,double.PositiveInfinity)]
-        protected int Id;
+        [Range(0, double.PositiveInfinity)]
+        public int Id;
 
     }
+
 }
-*/

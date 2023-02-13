@@ -28,9 +28,9 @@
                                 <td scope="col">@user.Role</td>
                                 <td>
                                     <form asp-action="SendEmail" asp-controller="Administration" asp-route-email="@user.Email" method="post">
-                                        <button class="btn btn-sm btn-info" type="submit">
-                                            Send email
-                                        </button>
+                                    <button class="btn btn-sm btn-info"type="submit" onclick="displayAlert()">
+                                        Send email
+                                    </button>
                                     </form>
                                 </td>
                                 @if (User.IsInRole("Moderator") && (user.Role != AppStore.Enums.Roles.User))
@@ -51,8 +51,6 @@
                                         </form>
                                     </td>
                                 }
-
-
                             </tr>
                         }
                     </tbody>
@@ -61,3 +59,10 @@
         </div>
     </div>
 </body>
+@section Scripts{
+        <script>
+            function displayAlert() {
+                Swal.fire("Email sent");
+            }
+        </script>
+}
