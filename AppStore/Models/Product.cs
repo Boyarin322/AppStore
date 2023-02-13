@@ -5,6 +5,13 @@ namespace AppStore.Models
 
     public class Product
     {
+        public Product(decimal price, string productname, string description) {
+            Price= price;
+            Productname= productname;
+            Description= description;
+            IsFavorite= false;
+        }
+
         [Required]
         public decimal Price;
 
