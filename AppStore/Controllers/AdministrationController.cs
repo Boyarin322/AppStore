@@ -40,7 +40,7 @@ namespace AppStore.Controllers
         public async Task<IActionResult> SendEmail(string email)
         {
             var result = await EmailHelper.SendMailAsync(email, "Checking...");
-            _logger.LogInformation($"Messege to{email} was sent: {result}");
+            _logger.LogInformation($"Messege to : {email} was sent: {result}");
             return RedirectToAction("Users", "Administration");
         }
     }
