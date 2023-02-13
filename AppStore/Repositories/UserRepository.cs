@@ -32,11 +32,21 @@ namespace AppStore.Repositories
 
         public async Task<User> GetValue(int id)
         {
-            return await _db.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await _db.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if(user == null)
+            {
+                throw new Exception();
+            }
+            return user;
         }
         public async Task<User> GetValue(string username)
         {
-            return await _db.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _db.Users.FirstOrDefaultAsync(x => x.Username == username);
+            if(user == null)
+            {
+                throw new Exception();
+            }
+            return user;
         }
 
         public async Task<List<User>> Select()
