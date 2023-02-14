@@ -36,6 +36,7 @@ namespace AppStore.Controllers
             {
                 return RedirectToAction("Users", "Administration");
             }
+            //add error view
             return RedirectToAction("Users", "Administration");
         }
         [HttpPost]
@@ -54,6 +55,17 @@ namespace AppStore.Controllers
                 return View(responce.Data);
             }
             return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct(Guid id)
+        {
+            var responce = await _productService.DeleteProduct(id);
+            if(responce.StatusCode== Enums.StatusCode.Success)
+            {
+                return RedirectToAction("Products", "Administration");
+            }
+            //add error view
+            return RedirectToAction("Products", "Administration");
         }
     }
 }
