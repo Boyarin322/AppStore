@@ -1,4 +1,4 @@
-namespace AppStore.Models
+namespace AppStore.Models.ViewModels
 {
     public class ErrorViewModel
     {

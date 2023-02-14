@@ -1,7 +1,5 @@
 ﻿using AppStore.Interfaces;
 using AppStore.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppStore.Repositories
@@ -33,7 +31,7 @@ namespace AppStore.Repositories
             return true;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(Guid id)
         {
             var product = _db.Products.FirstOrDefault(x => x.Id == id);
             if (product == null)
@@ -53,16 +51,6 @@ namespace AppStore.Repositories
         public async Task<Product> GetValue(string productname)
         {
             var product = await _db.Products.FirstOrDefaultAsync(x => x.Productname == productname);
-            if (product == null)
-            {
-                throw new Exception();
-            }
-            return product;
-        }
-
-        public async Task<Product> GetValue(int id)
-        {
-            var product = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
             if (product == null)
             {
                 throw new Exception();

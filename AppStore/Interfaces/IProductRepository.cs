@@ -9,5 +9,6 @@ namespace AppStore.Interfaces
         Task<List<Product>> Select();
         public Task<bool> Delete(Product entity);
         public IQueryable<Product> GetAll();
+
     }
 }

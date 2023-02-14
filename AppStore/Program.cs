@@ -15,6 +15,9 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
     builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IUserService, UserService>();
+    builder.Services.AddScoped<IProductRepository, ProductRepository >();
+   builder.Services.AddScoped<IProductService, ProductService>();
+   
 
     builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddCookie(options =>
