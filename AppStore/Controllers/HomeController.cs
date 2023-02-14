@@ -1,4 +1,5 @@
 ﻿using AppStore.Models;
+using AppStore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

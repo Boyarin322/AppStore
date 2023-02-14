@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppStore.Models
 {
@@ -6,26 +8,26 @@ namespace AppStore.Models
     public class Product
     {
         public Product(decimal price, string productname, string description) {
+
             Price= price;
             Productname= productname;
             Description= description;
-            IsFavorite= false;
+            Id= Guid.NewGuid();
         }
 
         [Required]
-        public decimal Price;
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal Price { get; set; }
 
-        public bool IsFavorite;
-
-        [Required]
-        public string Productname;
 
         [Required]
-        public string Description;
+        public string Productname { get; set; }
+
+        [Required]
+        public string Description { get; set; }
 
         [Key]
-        [Range(0, double.PositiveInfinity)]
-        public int Id;
+        public Guid Id { get; set; }
 
     }
 

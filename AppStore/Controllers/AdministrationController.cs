@@ -9,11 +9,13 @@ namespace AppStore.Controllers
     public class AdministrationController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IProductService _productService;
         private readonly ILogger<AdministrationController> _logger;
-        public AdministrationController(ILogger<AdministrationController> logger,IUserService userService)
+        public AdministrationController(ILogger<AdministrationController> logger,IUserService userService, IProductService productService)
         {
             _logger = logger;
             _userService = userService;
+            _productService = productService;
         }
 
         [HttpGet]
@@ -42,6 +44,16 @@ namespace AppStore.Controllers
             var result = await EmailHelper.SendMailAsync(email, "Checking...");
             _logger.LogInformation($"Messege to : {email} was sent: {result}");
             return RedirectToAction("Users", "Administration");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Products()
+        {
+            var responce = await _productService.GetProducts();
+            if (responce.StatusCode == Enums.StatusCode.Success)
+            {
+                return View(responce.Data);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
