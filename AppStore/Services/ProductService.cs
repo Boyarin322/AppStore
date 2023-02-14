@@ -16,11 +16,11 @@ namespace AppStore.Services
         {
             _productRepository = productRepository;
         }
-        public async Task<BaseResponse<bool>> DeleteProduct(Product product)
+        public async Task<BaseResponse<bool>> DeleteProduct(Guid id)
         {
             try
             {
-                await _productRepository.Delete(product);
+                await _productRepository.Delete(id);
                 return new BaseResponse<bool>
                 {
                     Data = true,
