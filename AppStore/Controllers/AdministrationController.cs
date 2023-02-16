@@ -1,6 +1,7 @@
 ﻿using AppStore.Helpers;
 using AppStore.Interfaces;
 using AppStore.Models;
+using AppStore.Models.ViewModels;
 using AppStore.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -66,6 +67,25 @@ namespace AppStore.Controllers
             }
             //add error view
             return RedirectToAction("Products", "Administration");
+        }
+        [HttpGet]
+        public IActionResult CreateProduct()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var responce = await _productService.CreateProduct(model);
+                if (responce.StatusCode == Enums.StatusCode.Success)
+                {
+                    _logger.LogInformation($"Product {model.Productname} created");
+                    return RedirectToAction("CreateProduct", "Administration");
+                }
+            }
+            return View(model);
         }
     }
 }

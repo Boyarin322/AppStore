@@ -17,7 +17,7 @@
                     <i class="fab fa-slack"></i>
                     AppStore
                 </a>
-                
+
                 <div class="float-end">
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -32,7 +32,7 @@
                             <i class="fa fa-solid fa-user"></i>
                         </a>
                     }
-                    <button class="btn btn-dark navbar-toggler border-0" type="button">         
+                    <button class="btn btn-dark navbar-toggler border-0" type="button">
                         <i class="fa fa-shopping-cart">
                         </i>
                     </button>
@@ -59,18 +59,18 @@
                                 <li><a class="dropdown-item" href="#">All Seasons</a></li>
                             </ul>
                         </li>
-                        @if(User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                         {
                             <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Administration
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-controller="Administration" asp-action="Users">Users</a></li>
-                                <li><a class="dropdown-item" asp-controller="Administration" asp-action="Products">Products</a></li>
-                                <li><a class="dropdown-item" asp-controller="Administration" asp-action="Products">Create product</a></li>
-                            </ul>
-                        </li>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administration
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Administration" asp-action="Users">Users</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Administration" asp-action="Products">Products</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Administration" asp-action="CreateProduct">Create product</a></li>
+                                </ul>
+                            </li>
                         }
                     </ul>
                     @if (User.Identity.IsAuthenticated)
@@ -84,7 +84,8 @@
 
                         </a>
                     }
-                    @if (User.Identity.IsAuthenticated == false){
+                    @if (User.Identity.IsAuthenticated == false)
+                    {
                         <a class="btn border-0 btn-dark position-relative d-none d-lg-block" type="button" asp-area="" asp-controller="Account" asp-action="Logger">
                             Log in
                             <i class="fa fa-solid fa-user p-1"></i>
@@ -95,12 +96,12 @@
                         Cart
                         <i class="fa fa-shopping-cart p-1">
                         </i>
-                        
+
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             3
                             <span class="visually-hidden">Products in cart</span>
                         </span>
-                    </button> 
+                    </button>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">Search</button>
@@ -109,17 +110,124 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="mt-5 pb-3">
+
             @RenderBody()
+
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-dark">
-        <div class="container">
-            &copy; 2023 - AppStore - <a class="text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+    <footer class="text-center footer text-lg-start text-white">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-between p-4"
+                 style="background-color: #6351ce">
+            <!-- Left -->
+            <div class="me-5">
+                <span>Connect with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="bg-dark pt-5">
+            <div class="container text-center text-md-start">
+                <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold">AppStore</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px" />    
+                        
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Products</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p>
+                            <a href="#!" class="text-white">ProductName</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">ProductName</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">ProductName</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">ProductName</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Useful links</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p>
+                            <a href="#!" class="text-white">Your Account</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">Become an Affiliate</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">Shipping Rates</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold">Contact</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                        <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                        <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-3"
+             style="background-color: rgba(0, 0, 0, 0.7)">
+            © 2023
+            <a class="text-white" asp-controller="Home" asp-action="Privacy">AppStore | Privacy Policy</a>
         </div>
+        <!-- Copyright -->
     </footer>
+    <!-- Footer -->
+
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

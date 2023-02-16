@@ -1,5 +1,21 @@
+/*main*/
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+body {
+    min-height:100%;
+    margin-bottom: 60px;
+}
+footer{
+    position:sticky;
+    top:100%;
 }
 ::selection {
     color: black;
@@ -17,16 +33,7 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 #header-nav {
@@ -34,8 +41,19 @@ body {
      font-weight : bold;
 }
 /*
+    end
 */
-
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom :initial;
+}
+.ch3{
+    font-size: 4rem;
+}
+.ph3 {
+    font-size: 2rem;
+}
 .view-item {
     background-image: url(https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-repeat: no-repeat;
@@ -43,14 +61,14 @@ body {
 }
 .maintext {
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     word-wrap : unset;
 }
 .mainbutton {
     position: absolute;
-    top: 40%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight : 500;
@@ -68,7 +86,7 @@ a{
     color : black;
 }
 /*
-    Logger styles
+    Logger 
 */
 .log-box {
     display: flex;
@@ -153,5 +171,11 @@ a{
     padding: 10px 0 10px 0;
 }
 /*
-    end logger styles
+    end
+*/
+/*
+    footer
+*/
+/*
+    end
 */
