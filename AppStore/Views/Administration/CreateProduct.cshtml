@@ -1,0 +1,34 @@
+﻿@model AppStore.Models.ViewModels.CreateProductViewModel
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+<body class="log-body">
+    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+    {
+        <div class="box log-box">
+            <div class="container log-container">
+            <div class="top">
+                <header class="log-header">Create product</header>
+            </div>
+            <form asp-controller="Administration" asp-action="CreateProduct">
+                <div asp-validation-summary="All"></div>
+                <div class="input-field my-3">
+                   
+                    <input asp-for="Productname" type="text" class="input" placeholder="Product name" id="">
+                </div>
+                <div class="input-field mb-3">
+                    
+                    <input asp-for="Description" type="text" class="input" placeholder="Description" id="">
+                </div>
+                <div class="input-field">
+                   
+                    <input asp-for="Price" type="number" class="input" placeholder="Price" id="">
+                </div>
+                <div class="input-field my-3">
+                    <input type="submit" class="submit" value="CreateProduct" id="">
+                </div>
+            </form>
+        </div>
+    </div>
+    }
+</body>
