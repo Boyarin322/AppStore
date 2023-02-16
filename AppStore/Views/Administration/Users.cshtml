@@ -28,7 +28,7 @@
                                 <td scope="col">@user.Role</td>
                                 <td>
                                     <form asp-action="SendEmail" asp-controller="Administration" asp-route-email="@user.Email" method="post">
-                                    <button class="btn btn-sm btn-info"type="submit" onclick="displayAlert()">
+                                    <button class="btn btn-sm btn-info"type="submit" onclick="sendEmail()">
                                         Send email
                                     </button>
                                     </form>
@@ -45,7 +45,7 @@
                                 {
                                     <td>
                                         <form asp-action="DeleteUser" asp-controller="Administration" asp-route-id="@user.Id" method="post">
-                                            <button class="btn btn-sm btn-danger" type="submit">
+                                            <button class="btn btn-sm btn-danger" type="submit" onclick="deleteUser()">
                                                 Delete
                                             </button>
                                         </form>
@@ -61,8 +61,11 @@
 </body>
 @section Scripts{
         <script>
-            function displayAlert() {
+            function sendEmail() {
                 Swal.fire("Email sent");
+            }
+            function deleteUser() {
+                Swal.fire("UserDeleted");
             }
         </script>
 }
