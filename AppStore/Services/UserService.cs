@@ -18,7 +18,7 @@ namespace AppStore.Services
         {
             _userRepository = userRepository;
         }
-        public async Task<BaseResponse<bool>> DeleteUser(int id)
+        public async Task<BaseResponse<bool>> DeleteUser(Guid id)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace AppStore.Services
         {
             try
             {
-                User user = await _userRepository.GetValue(model.Username);
+                User user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Username == model.Username);
                 if (user == null)
                 {
                     return new BaseResponse<ClaimsIdentity>()
@@ -116,7 +116,7 @@ namespace AppStore.Services
         {
             try
             {
-                User user = await _userRepository.GetValue(model.Username);
+                User user = await _userRepository.GetAll().FirstOrDefaultAsync(x=> x.Username == model.Username);
                 if (user != null)
                 {
                     return new BaseResponse<ClaimsIdentity>()

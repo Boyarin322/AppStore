@@ -30,7 +30,7 @@ namespace AppStore.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(Guid id)
         {
             var response = await _userService.DeleteUser(id);
             if(response.StatusCode== Enums.StatusCode.Success)

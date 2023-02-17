@@ -4,7 +4,7 @@ using AppStore.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Security.Claims;
 
 namespace AppStore.Controllers
 {
@@ -19,7 +19,7 @@ namespace AppStore.Controllers
 
         }
         [HttpGet]
-        public async Task<IActionResult> Register()
+        public IActionResult Register()
         {
             return View();
         }
@@ -32,7 +32,7 @@ namespace AppStore.Controllers
                 if (response.StatusCode == Enums.StatusCode.Success)
                 {
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                        new System.Security.Claims.ClaimsPrincipal(response.Data));
+                        new ClaimsPrincipal(response.Data));
 
                     var emailResult = await EmailHelper.SendMailAsync(model.Email, "Thanks for registration to AppStore");
                     _logger.LogInformation($"Mail was sent : {emailResult}");
@@ -40,6 +40,8 @@ namespace AppStore.Controllers
 
 
                 }
+                _logger.LogError("Register error");
+                ModelState.AddModelError("", $"Error : {response.Description}");
             }
             return View(model);
         }
@@ -59,10 +61,12 @@ namespace AppStore.Controllers
                 if (response.StatusCode == Enums.StatusCode.Success)
                 {
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                        new System.Security.Claims.ClaimsPrincipal(response.Data));
+                        new ClaimsPrincipal(response.Data));
 
                     return RedirectToAction("Index", "Home");
                 }
+               
+                ModelState.AddModelError("", $"Error : {response.Description}");
             }
             return View(model);
         }

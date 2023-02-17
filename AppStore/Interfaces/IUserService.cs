@@ -13,6 +13,6 @@ namespace AppStore.Interfaces
         Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model);
         Task<BaseResponse<ClaimsIdentity>> Logger(LoggerViewModel model);
 
-        Task<BaseResponse<bool>> DeleteUser(int id);
+        Task<BaseResponse<bool>> DeleteUser(Guid id);
     }
 }
