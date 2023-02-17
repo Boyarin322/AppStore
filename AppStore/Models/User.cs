@@ -6,29 +6,29 @@ namespace AppStore.Models
 {
     public class User
     { 
-        public User(string username, string password, string email)
+        public User(string username, string email, string password)
         {
+            Id = Guid.NewGuid();
             Username = username;
-            Password = password;
             Email = email;
+            Password = password; 
             Role = Roles.User;
         }
         
 
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
    
         public string Username { get; set; }
 
         [Required]
-     
-        public string Password { get; set; }
+        public string Email { get; set; }
 
         [Required]
-
-        public string Email { get; set; }
+     
+        public string Password { get; set; }
 
         [Required]
         [Display(Name = "Role")]

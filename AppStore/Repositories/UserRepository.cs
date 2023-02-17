@@ -13,12 +13,12 @@ namespace AppStore.Repositories
         }
         public async Task<bool> Create(User entity)
         {
-            await _db.Users.AddAsync(entity);   
+            await _db.AddAsync<User>(entity);   
             await _db.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(Guid id)
         {
             var user = _db.Users.FirstOrDefault(u => u.Id == id);
             if(user == null)
@@ -30,7 +30,7 @@ namespace AppStore.Repositories
             return true;
         }
 
-        public async Task<User> GetValue(int id)
+        public async Task<User> GetValue(Guid id)
         {
             var user = await _db.Users.FirstOrDefaultAsync(x => x.Id == id);
             if(user == null)

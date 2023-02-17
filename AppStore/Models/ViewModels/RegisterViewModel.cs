@@ -15,13 +15,13 @@ namespace AppStore.Models.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Input your password")]
-        [DataType(DataType.Password)]
+       
         [MinLength(6, ErrorMessage = "Password must contain at least 6 symbols")]
         [MaxLength(30, ErrorMessage = "Password must not be longer than 30 symbols")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Repeat your password")]
-        [DataType(DataType.Password)]
+    
         [MinLength(6, ErrorMessage = "Password must contain at least 6 symbols")]
         [MaxLength(30, ErrorMessage = "Password must not be longer than 30 symbols")]
         [Compare("Password", ErrorMessage = "Passwords not equal")]
