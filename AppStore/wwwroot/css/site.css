@@ -174,8 +174,21 @@ a{
     end
 */
 /*
-    footer
+    product
 */
+.card {
+    transition : all 0.3s;
+    width: 100%;
+    height:100%;
+    display : flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+}
+.card:hover{
+    transform: scale(1.05);
+}
 /*
     end
 */

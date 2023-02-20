@@ -13,6 +13,9 @@ namespace AppStore.Models.ViewModels
         [Display(Name = "Description")]
         public string Description { get; set; }
 
+        [Display(Name = "Photo")]
+        public string? Photo { get; set; }
+
         [Display(Name = "Price")]
         public decimal? Price { get; set; }
 

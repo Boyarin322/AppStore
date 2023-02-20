@@ -14,6 +14,7 @@
                             <th scope="col">Productname</th>
                             <th scope="col">Price</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Photo</th>
                             <th scope="col">#</th>
                         </tr>
                     </thead>
@@ -25,6 +26,7 @@
                                 <td scope="col">@product.Productname</td>
                                 <td scope="col">@product.Price</td>
                                 <td scope="col">@product.Description</td>
+                                <td scope="col">@product.Photo</td>
                                     <td>
                                         <form asp-action="DeleteProduct" asp-controller="Administration" asp-route-id="@product.Id" method="post">
                                             <button class="btn btn-sm btn-danger" type="submit">

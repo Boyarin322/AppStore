@@ -48,13 +48,9 @@ namespace AppStore.Repositories
             return _db.Products;
         }
 
-        public async Task<Product> GetValue(string productname)
+        public async Task<Product> GetValue(Guid id)
         {
-            var product = await _db.Products.FirstOrDefaultAsync(x => x.Productname == productname);
-            if (product == null)
-            {
-                throw new Exception();
-            }
+            var product = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
             return product;
         }
 
