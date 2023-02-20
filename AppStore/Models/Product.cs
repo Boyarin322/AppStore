@@ -1,17 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Policy;
 
 namespace AppStore.Models
 {
 
     public class Product
     {
-        public Product(decimal price, string productname, string description) {
+        public Product(decimal price, string productname, string description, string photo) {
 
             Price= price;
             Productname= productname;
             Description= description;
+            Photo= photo;
             Id= Guid.NewGuid();
         }
 
@@ -25,6 +27,10 @@ namespace AppStore.Models
 
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        [DataType(DataType.ImageUrl)]
+        public string Photo { get; set; }
 
         [Key]
         public Guid Id { get; set; }

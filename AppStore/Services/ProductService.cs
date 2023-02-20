@@ -38,9 +38,43 @@ namespace AppStore.Services
                 };
             }
         }
+        public async Task<BaseResponse<GetProductsViewModel>> GetProduct(Guid id)
+        {
+            try
+            {
+                var product = await _productRepository.GetValue(id);
+
+                if(product == null)
+                {
+                    return new BaseResponse<GetProductsViewModel>
+                    {
+                        StatusCode = Enums.StatusCode.NotFound,
+                        Description = "Product not found",
+                    };
+                }
+                var data = new GetProductsViewModel { 
+                    Description= product.Description ,
+                    Photo= product.Photo ,
+                    Price= product.Price ,
+                    Productname= product.Productname ,
+                    Id= product.Id
+                };
+                return new BaseResponse<GetProductsViewModel> { 
+                    Data = data ,
+                    StatusCode = Enums.StatusCode.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<GetProductsViewModel>
+                {
+                    StatusCode = Enums.StatusCode.InternalServerError,
+                    Description = ex.Message
+                };
+            }
+        }
         public async Task<BaseResponse<IEnumerable<GetProductsViewModel>>> GetProducts()
         {
-            var baseResponse = new BaseResponse<IEnumerable<Product>>();
 
             try
             {
@@ -50,7 +84,8 @@ namespace AppStore.Services
                      Id = x.Id,
                      Productname = x.Productname,
                      Description = x.Description,
-                     Price = x.Price
+                     Price = x.Price,
+                     Photo = x.Photo
                  })
              .ToListAsync();
 
@@ -79,7 +114,8 @@ namespace AppStore.Services
                 Product product = new(
                     model.Price,
                     model.Productname,
-                    model.Description
+                    model.Description,
+                    model.Photo
                     );
 
                 var responce = await _productRepository.Create(product);

@@ -8,9 +8,11 @@ namespace AppStore.Interfaces
 {
     public interface IProductService
     {
-        Task<BaseResponse<bool>> DeleteProduct(Guid id);
+        public Task<BaseResponse<bool>> DeleteProduct(Guid id);
 
         public Task<BaseResponse<bool>> CreateProduct(CreateProductViewModel model);
         public Task<BaseResponse<IEnumerable<GetProductsViewModel>>> GetProducts();
+
+        public Task<BaseResponse<GetProductsViewModel>> GetProduct(Guid id);
     }
 }

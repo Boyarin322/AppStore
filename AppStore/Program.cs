@@ -4,7 +4,9 @@ using AppStore.Interfaces;
 using AppStore.Models;
 using AppStore.Repositories;
 using AppStore.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+
 using Microsoft.EntityFrameworkCore;
 
 
@@ -17,15 +19,15 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IProductRepository, ProductRepository >();
    builder.Services.AddScoped<IProductService, ProductService>();
-   
 
-    builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        .AddCookie(options =>
-        {
-            options.LoginPath = new PathString("/Account/Logger");
-            options.AccessDeniedPath = new PathString("/Account/Logger");
-        }
-        );
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = new PathString("/Account/Logger");
+        options.AccessDeniedPath = new PathString("/Account/Logger");
+    }
+    );
 
     builder.Services.AddControllersWithViews();
 
