@@ -16,6 +16,17 @@
                 <h5 class="card-title text-center">@Model?.Productname</h5>
                 <p class="card-text"><b>Description: </b>@Model?.Description</p>
                 <p class="card-text"><b>Price: </b>@Model?.Price $</p>
+      
+                <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model?.Id" method="post">
+                    <button class="btn btn-lg btn-success" type="submit">
+                        Add to cart
+                    </button>
+                </form>
+                <form asp-action="Cart" asp-controller="Cart" asp-route-id="@Model?.Id" method="get">
+                    <button class="btn btn-lg btn-info" type="submit">
+                        Go to cart
+                    </button>
+                </form>
             </div>
         </div>
     </div>

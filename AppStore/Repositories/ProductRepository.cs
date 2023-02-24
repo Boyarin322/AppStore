@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppStore.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : IBaseRepository<Product>
     {
         private readonly ApplicationDbContext _db;
         public ProductRepository(ApplicationDbContext db)
@@ -51,12 +51,13 @@ namespace AppStore.Repositories
         public async Task<Product> GetValue(Guid id)
         {
             var product = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
+            {
+                //handle exception
+                throw new Exception();
+            }
             return product;
         }
 
-        public async Task<List<Product>> Select()
-        {
-            return await _db.Products.ToListAsync();
-        }
     }
 }
