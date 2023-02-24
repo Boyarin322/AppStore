@@ -1,8 +1,6 @@
-﻿using AppStore.Models;
-using AppStore.Models.ViewModels;
+﻿using AppStore.Models.ViewModels;
 using AppStore.Responses;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace AppStore.Interfaces
 {

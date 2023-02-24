@@ -12,9 +12,9 @@ namespace AppStore.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IBaseRepository<User> _userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IBaseRepository<User> userRepository)
         {
             _userRepository = userRepository;
         }

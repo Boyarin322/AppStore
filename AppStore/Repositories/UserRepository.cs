@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppStore.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IBaseRepository<User>
     {
         private readonly ApplicationDbContext _db;
         public UserRepository(ApplicationDbContext db)
@@ -35,24 +35,12 @@ namespace AppStore.Repositories
             var user = await _db.Users.FirstOrDefaultAsync(x => x.Id == id);
             if(user == null)
             {
-                throw new Exception();
-            }
-            return user;
-        }
-        public async Task<User> GetValue(string username)
-        {
-            var user = await _db.Users.FirstOrDefaultAsync(x => x.Username == username);
-            if(user == null)
-            {
+                //handle excpetion
                 throw new Exception();
             }
             return user;
         }
 
-        public async Task<List<User>> Select()
-        {
-            return await _db.Users.ToListAsync();
-        }
         public IQueryable<User> GetAll()
         {
             return _db.Users;
