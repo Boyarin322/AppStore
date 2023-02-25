@@ -1,6 +1,6 @@
 ﻿namespace AppStore.Enums
 {
-    public enum StatusCode
+    public enum StatusCode//мені здається тут є щось схлже системне 
     {
         Success = 200,
         ClientError = 400,
