@@ -53,7 +53,7 @@ namespace AppStore.Services
                 return response;
             }
             catch (Exception ex)
-            {
+        {
                 response.StatusCode = Enums.StatusCode.InternalServerError;
                 response.Description = ex.Message;
                 return response;

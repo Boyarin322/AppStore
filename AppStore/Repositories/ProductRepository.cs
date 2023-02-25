@@ -51,6 +51,7 @@ namespace AppStore.Repositories
         public async Task<Product> GetValue(Guid id)
         {
             var product = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
+       
             return product;
         }
 

@@ -1,24 +1,40 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Data.Common;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Policy;
+
 namespace AppStore.Models
 {
-    public abstract class Product
+
+    public class Product
     {
+        public Product(decimal price, string productname, string description, string photo) {
+
+            Price= price;
+            Productname= productname;
+            Description= description;
+            Photo= photo;
+            Id= Guid.NewGuid();
+        }
+
         [Required]
-        [Range(0, 100000)]
-        protected decimal price;
-        protected bool isFavorite;
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal Price { get; set; }
+
+
         [Required]
-        [MaxLength(50)]
-        [MinLength(5)]
-        protected string name;
-        [MaxLength(1000)]
-        [MinLength(10)]
-        protected string description;
+        public string Productname { get; set; }
+
         [Required]
-        [Range(0,double.PositiveInfinity)]
-        protected int id;
-        protected Photo photo;
+        public string Description { get; set; }
+
+        [Required]
+        [DataType(DataType.ImageUrl)]
+        public string Photo { get; set; }
+
+        [Key]
+        public Guid Id { get; set; }
 
     }
+
 }

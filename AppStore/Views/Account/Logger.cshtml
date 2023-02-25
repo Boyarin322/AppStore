@@ -1,0 +1,39 @@
+﻿@model AppStore.Models.ViewModels.LoggerViewModel
+@{
+    ViewData["Title"] = "Logger";
+}
+
+<body class="log-body">
+    <div class="box log-box">
+        <div class="container log-container">
+            <div class="top">
+                <span class="log-span">Don't have an account? <a asp-controller="Account" asp-action="Register"> Create</a></span>
+               
+                <header class="log-header">Log in</header>
+            </div>
+            <form asp-controller="Account" asp-action="Logger">
+                <div asp-validation-summary="All"></div>
+                <div class="input-field my-3">
+                    <i class='fa fa-solid fa-user i-log'></i>
+                    <input asp-for="Username" type="text" class="input" placeholder="Username" id="">
+                </div>
+                <div class="input-field">
+                    <i class='fa fa-solid fa-lock i-log'></i>
+                    <input asp-for="Password" type="Password" class="input" placeholder="Password" id="">
+                </div>
+                <div class="input-field my-3">
+                    <input type="submit" class="submit" value="Login" id="">
+                </div>
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" name="" id="check">
+                    <label for="check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Forgot password?</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

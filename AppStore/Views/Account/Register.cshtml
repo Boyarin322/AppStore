@@ -1,0 +1,37 @@
+﻿@model AppStore.Models.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<body class="log-body">
+    <div class="box log-box">
+        <div class="container log-container">
+            <div class="top">
+                <span class="log-span">Have an account?<a asp-controller="Account" asp-action="Logger">Log in</a></span>
+                <header class="log-header">Register</header>
+            </div>
+            <form asp-controller="Account" asp-action="Register">
+                <div asp-validation-summary="All"></div>
+                <div class="input-field my-3">
+                    <i class='fa fa-solid fa-user i-log'></i>
+                    <input asp-for="Username" type="text" class="input" placeholder="Username" id="">
+                </div>
+                <div class="input-field mb-3">
+                    <i class='fa fa-solid fa-envelope i-log'></i>
+                    <input asp-for="Email" type="email" class="input" placeholder="Email" id="">
+                </div>
+                <div class="input-field">
+                    <i class='fa fa-solid fa-lock i-log'></i>
+                    <input asp-for="Password" type="Password" class="input" placeholder="Password" id="">
+                </div>
+                <div class="input-field my-3">
+                    <i class='fa fa-solid fa-lock i-log'></i>
+                    <input asp-for="ConfirmPassword" type="Password" class="input" placeholder="Confirm password" id="">
+                </div>
+                <div class="input-field my-3">
+                    <input type="submit" class="submit" value="Register" id="">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

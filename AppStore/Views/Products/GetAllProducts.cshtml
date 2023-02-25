@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AppStore.Models.ViewModels.GetProductsViewModel>
+
+@{
+    ViewData["Title"] = "GetAllProducts";
+}
+
+@if (Model.Count() == 0)
+{
+    <div class="card col-md-12">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="https://cdn.webshopapp.com/shops/50597/files/202371404/650x650x2/b-c-basic-heren-t-shirt.jpg"
+                 class="img-fluid rounded-start rounded">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title text-center">No products found (</h5>
+                    <p class="card-text">
+                        Soon we will add more
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 10px;"></div>
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="row row-cols-1 col-md-3 gy-3 text-center">
+                <div class="col" style="padding: 10px;">
+                    <div class="card h-100">
+                        <img src="@product?.Photo" class="card-img-top" alt="@product?.Productname img" width="650" height="280">
+                        <div class="card-body">
+                            <h5 class="card-title">@product?.Productname</h5>
+                            <p class="card-text">@product?.Description</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Price: @product?.Price $</li>
+                      
+                        </ul>
+                        <div class="card-body">
+                            <a asp-action="GetProduct" asp-route-id="@product?.Id" class="card-link btn btn-lg btn-outline-success">Check out</a>
+                            @* <a asp-controller="Basket" asp-action="Add" asp-route-id="@id" class="card-link">Add</a> *@
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <hr />
+                                <a asp-controller="Products" asp-action="Delete" asp-route-id="@product?.Id" class="btn btn-danger">Delete</a>
+                                <a asp-controller="Products" asp-action="UpdateProduct" asp-route-id="@product?.Id" class="btn btn-primary">Update</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

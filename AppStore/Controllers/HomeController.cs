@@ -1,4 +1,5 @@
 ﻿using AppStore.Models;
+using AppStore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -22,6 +23,7 @@ namespace AppStore.Controllers
         {
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

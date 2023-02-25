@@ -37,6 +37,7 @@ namespace AppStore.Repositories
         public async Task<Cart> GetValue(Guid id)
         {
             var cart = await _db.Carts.FirstOrDefaultAsync(p => p.Id == id);
+          
             return cart;
         }
 

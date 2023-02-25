@@ -32,7 +32,7 @@ namespace AppStore.Controllers
         {
             var response = await _cartService.AddToCart(userID,productID);
             if(response.StatusCode == Enums.StatusCode.Success)
-            {
+        {
                 return RedirectToAction("Products", "ProductController");
             }
             _logger.LogError(response.Description);
