@@ -1,10 +1,10 @@
 # AppStore - Online Shop Web Application
 
-#Description
+<h2>Description</h2>
 This is an online clothes shop web application built on ASP.NET Core MVC using MS SQL Server as the database and Entity Framework as the ORM.
 
 
-#Installation
+<h2>Installation</h2>
 Clone the repository from GitHub.
 
 Open the solution file (AppStore.sln) in Visual Studio.
@@ -15,13 +15,14 @@ Open Package Manager Console and run the following command to create the databas
 
 sql
 Copy code
-Update-Database
+<code>Update-Database</code>
 This will create the necessary tables in the database.
 
 Run the application in Visual Studio.
 
-#Usage
-User
+<h2>Usage</h2>
+
+<h3>User</h3>
 A user can do the following:
 
 View products on the home page or by category.
@@ -30,13 +31,13 @@ Register and log in to their account.
 View their profile and order history.
 Checkout and place an order.
 
-#Moderator
+<h3>Moderator</h3>
 A Moderator can do the following:
 
 Can delete users(only),
 Can create products.
 
-#Admin
+<h3>Admin</h3>
 An admin can do the following:
 
 Add, edit, and delete products and categories.
@@ -44,19 +45,27 @@ Send mail to all,
 View and edit orders.
 
 
-#Database
+<h2>Database</h2>
+
 The database schema includes the following tables:
 
-Users : UserId, Username, Email, Password(hashed)
-Products : ProductId, Productname, Description, Price, Photo(Url to photo)
-Carts : Id, UserId(foreign key), ProductId(foreign key)
+Users : UserId, Username, Email, Password(hashed),
 
-#Technologies Used
-ASP.NET Core MVC
-MS SQL Server
-Entity Framework
-HTML/CSS/JavaScript
-Bootstrap
+Products : ProductId, Productname, Description, Price, Photo(Url to photo),
+
+Carts : Id, UserId(foreign key), ProductId(foreign key).
+
+<h2>Technologies Used</h2>
+
+ASP.NET Core MVC,
+
+MS SQL Server,
+
+Entity Framework,
+
+HTML/CSS/JavaScript,
+
+Bootstrap.
 
 #Credits
 This project was built by Nazariy Kozachok [Boyarin322].
