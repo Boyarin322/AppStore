@@ -18,8 +18,11 @@ namespace AppStore.Models.ViewModels
         [Range(0, int.MaxValue, ErrorMessage ="Price must be valid")]
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage="Input photo url")]
-        [DataType(DataType.ImageUrl, ErrorMessage="Wrong photo type")]
-        public string Photo { get; set; }
+        [Required(ErrorMessage ="Upload photo file")]
+        [DataType(DataType.Upload)]
+        public IFormFile ImageFile { get; set; }
+        public string? Photo { get; set; }
+
+        public Guid Id { get; set; } = new Guid();
     }
 }

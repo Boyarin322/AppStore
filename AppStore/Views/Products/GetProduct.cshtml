@@ -8,7 +8,7 @@
 <div class="card mb-3">
     <div class="row g-0">
         <div class="col-md-4">
-            <img src="@Model?.Photo"
+            <img src="@Url.Content(Model.Photo) alt=@Model.Productname"
                  class="img-fluid rounded-start rounded" alt="@Model?.Productname">
         </div>
         <div class="col-md-4">
@@ -17,12 +17,12 @@
                 <p class="card-text"><b>Description: </b>@Model?.Description</p>
                 <p class="card-text"><b>Price: </b>@Model?.Price $</p>
       
-                <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model?.Id" method="post">
+                <form asp-action="AddToCart" asp-controller="AddToCart" asp-route-id="@Model?.Id" method="post">
                     <button class="btn btn-lg btn-success" type="submit">
-                        Add to cart
+                      <!--  <a href="Url.Action("AddToCart", "Cart", new { productId = Model.Id, userId = Model.User.UserId })">Add to cart</a>-->
                     </button>
                 </form>
-                <form asp-action="Cart" asp-controller="Cart" asp-route-id="@Model?.Id" method="get">
+                <form asp-action="Cart" asp-controller="Cart" asp-route-id="" method="get">
                     <button class="btn btn-lg btn-info" type="submit">
                         Go to cart
                     </button>
