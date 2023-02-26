@@ -9,9 +9,15 @@ namespace AppStore.Helpers
         private Dictionary<string, string> _settings;
         public SettingsHelper(string settingsPath)
         {
-            if (!Directory.Exists(settingsPath) || !File.Exists(Path.Combine(settingsPath, "settings.json")))
+            if (!Directory.Exists(settingsPath))
             {
-                throw new DirectoryNotFoundException("Settings directory not found");
+                Directory.CreateDirectory(settingsPath);
+            }
+            if (!File.Exists(Path.Combine(settingsPath, "settings.json")))
+            {
+                File.Create(Path.Combine(settingsPath, "settings.json"));
+                _settings = new Dictionary<string, string>();
+                File.WriteAllText(Path.Combine(settingsPath, "settings.json"), JsonConvert.SerializeObject(_settings));
             }
             _settingsPath = settingsPath;
             _settings = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(Path.Combine(settingsPath, "settings.json")!)!)!;
@@ -28,6 +34,20 @@ namespace AppStore.Helpers
                 throw new KeyNotFoundException("Property not found");
             }
         }
+
+        public void RemoveProperty(string name)
+        {
+            if (_settings.ContainsKey(name))
+            {
+                _settings.Remove(name);
+                File.WriteAllText(Path.Combine(_settingsPath, "settings.json"), JsonConvert.SerializeObject(_settings));
+            }
+            else
+            {
+                throw new KeyNotFoundException("Property not found");
+            }
+        }
+
         public void SetProperty(string name, string value)
         {
             if (_settings.ContainsKey(name))

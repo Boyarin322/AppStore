@@ -1,11 +1,14 @@
-﻿using MimeKit;
+﻿using AppStore.Interfaces;
+using MimeKit;
 
 namespace AppStore.Helpers
 {
     public class EmailHelper
-    {
+    { 
+        
         public static async Task<bool> SendMailAsync(string email, string text)
         {
+            
             try
             {
                 MimeMessage messege = new MimeMessage();

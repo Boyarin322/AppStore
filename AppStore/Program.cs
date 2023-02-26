@@ -19,6 +19,7 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddScoped<IBaseRepository<Product>, ProductRepository >();
    builder.Services.AddScoped<IProductService, ProductService>();
+    builder.Services.AddScoped<ISettingsHelper, SettingsHelper>();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
