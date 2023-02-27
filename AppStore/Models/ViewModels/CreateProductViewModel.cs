@@ -19,10 +19,10 @@ namespace AppStore.Models.ViewModels
         public decimal Price { get; set; }
 
         [Required(ErrorMessage ="Upload photo file")]
-        [DataType(DataType.Upload)]
+        [DataType(DataType.Upload,ErrorMessage ="Wrong datatype")]
         public IFormFile ImageFile { get; set; }
         public string? Photo { get; set; }
 
-        public Guid Id { get; set; } = new Guid();
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

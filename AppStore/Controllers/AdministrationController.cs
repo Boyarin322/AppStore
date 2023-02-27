@@ -94,7 +94,7 @@ namespace AppStore.Controllers
             {
                 await model.ImageFile.CopyToAsync(stream);
             }
-            model.Photo = fileName;
+            model.Photo = $"/images/{fileName}";
 
             var responce = await _productService.CreateProduct(model);
             if (responce.StatusCode == Enums.StatusCode.Success)
