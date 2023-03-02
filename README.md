@@ -67,5 +67,5 @@ HTML/CSS/JavaScript,
 
 Bootstrap.
 
-#Credits
+<h2>Credits</h2>
 This project was built by Nazariy Kozachok [Boyarin322].
