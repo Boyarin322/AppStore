@@ -1,8 +1,6 @@
 ﻿using AppStore.Helpers;
 using AppStore.Interfaces;
-using AppStore.Models;
 using AppStore.Models.ViewModels;
-using AppStore.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppStore.Controllers
@@ -11,12 +9,15 @@ namespace AppStore.Controllers
     {
         private readonly IUserService _userService;
         private readonly IProductService _productService;
+        private readonly IWebHostEnvironment _environment;
         private readonly ILogger<AdministrationController> _logger;
-        public AdministrationController(ILogger<AdministrationController> logger, IUserService userService, IProductService productService)
+        public AdministrationController(ILogger<AdministrationController> logger, IUserService userService,
+            IProductService productService, IWebHostEnvironment environment)
         {
             _logger = logger;
             _userService = userService;
             _productService = productService;
+            _environment = environment;
         }
 
         [HttpGet]
@@ -60,6 +61,17 @@ namespace AppStore.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteProduct(Guid id)
         {
+            var product = await _productService.GetValue(id);
+
+            var photoPath = Path.Combine(_environment.WebRootPath, product.Data.Photo);
+            if (System.IO.File.Exists(photoPath))
+            {
+                System.IO.File.Delete(photoPath);
+            }
+            else
+            {
+                _logger.LogError($"not found {photoPath}");
+            }
             var responce = await _productService.DeleteProduct(id);
             if (responce.StatusCode == Enums.StatusCode.Success)
             {

@@ -14,5 +14,7 @@ namespace AppStore.Interfaces
         public Task<BaseResponse<IEnumerable<GetProductsViewModel>>> GetProducts();
 
         public Task<BaseResponse<GetProductsViewModel>> GetProduct(Guid id);
+
+        public Task<BaseResponse<Product>> GetValue(Guid id);
     }
 }

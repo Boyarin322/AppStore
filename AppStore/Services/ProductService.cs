@@ -5,6 +5,7 @@ using AppStore.Models;
 using AppStore.Repositories;
 using AppStore.Responses;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AppStore.Services
 {
@@ -15,6 +16,30 @@ namespace AppStore.Services
         public ProductService(IBaseRepository<Product> productRepository)
         {
             _productRepository = productRepository;
+        }
+        public async Task<BaseResponse<Product>> GetValue(Guid id)
+        {
+            var response = new BaseResponse<Product>();
+            try
+            {
+               var product = await _productRepository.GetValue(id);
+               if (product == null)
+                {
+                    response.StatusCode = StatusCode.NotFound;
+                    response.Description= "Product not found";
+                    return response;
+                }
+               response.StatusCode = StatusCode.Success;
+               response.Description= "Returned succesfully";
+               response.Data = product;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Description = ex.Message;
+                response.StatusCode = StatusCode.InternalServerError;
+                return response;
+            }
         }
         public async Task<BaseResponse<bool>> DeleteProduct(Guid id)
         {
